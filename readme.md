@@ -2,7 +2,7 @@
 
 - [3 Tier Application](#3-tier-application)
   - [Introduction](#introduction)
-  - [Prepare the dockerfiles](#prepare-the-dockerfiles)
+  - [Prepare the dockerfile's](#prepare-the-dockerfiles)
     - [Database](#database)
     - [Service](#service)
     - [Frontend](#frontend)
@@ -11,7 +11,7 @@
     - [Service](#service-1)
     - [App](#app)
   - [Running the three-tier application and conclusion](#running-the-three-tier-application-and-conclusion)
-  - [Networking and connclusion](#networking-and-connclusion)
+  - [Networking and conclusion](#networking-and-conclusion)
 
 ## Introduction
 The goal of this is to create a simple three tier architecture which contains three separate docker containers which are combined by using the docker-compose.yml file.
@@ -21,7 +21,7 @@ It will consist of the following parts:
 **Service tier**: A very basic node app using express which has a get endpoint to get and send data from the DB.  
 **Frontend tier**: Basic node web app which uses an express app to make a request to the service tier and send a html table with the data as response to the browser.
 
-## Prepare the dockerfiles
+## Prepare the dockerfile's
 First we need to create the docker files for each of the tiers.
 
 ### Database
@@ -51,5 +51,5 @@ We have no successfully configured a three tier application with docker. To run 
 If everything is correct you should be able to go to `http://localhost:3000/` and see something like this:  
 ![frontend-view](images/frontend-view.png)
 
-## Networking and connclusion
+## Networking and conclusion
 An important part of this setup is the networking. Our compose basically has two networks, `network-service` and `network-app`. The `network-service` allows the db and service tiers to communicate to each other. While the `network-app` connects the app and the service tier together. That means that the app can access the API inside the service layer but cannot access the db layer. And since we only expose a port for the app layer, from our host machine we cannot access the service or the database tier. That makes our setup modular and more secure.
