@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:11.2-alpine
+    environment:
+      POSTGRES_USER: demo_user
+      POSTGRES_PASSWORD: demo_user
+      POSTGRES_DB: demo_db
+    volumes:
+      - ./db/:/docker-entrypoint-initdb.d
+    networks:
+      - network-service
+
+  service:
+    build: ./service
+    environment:
+      - CONNECTION_STRING=postgres://demo_user:demo_user@db/demo_db
+    depends_on:
+      - db
+    networks:
+      - network-service
+      - network-app
+
+  app:
+    build: ./app
+    environment:
+      - API_URL=http://service:3001/data
+    depends_on:
+      - service
+    ports:
+      - "3000:3000"
+    networks:
+      - network-app
+
+
+networks:
+  network-service:
+  network-app:
