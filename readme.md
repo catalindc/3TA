@@ -48,7 +48,8 @@ On the app for the frontend we also want to create a port mapping for port 3000,
 
 ## Running the three-tier application and conclusion
 We have no successfully configured a three tier application with docker. To run it we use `docker-compose up --build` ,the `--build` makes sure that we build the image, if it is not yet available.
-If everything is correct you should be able to go to `` and see something like this: ![frontend-view](images/frontend-view.png)
+If everything is correct you should be able to go to `http://localhost:3000/` and see something like this:  
+![frontend-view](images/frontend-view.png)
 
 ## Networking and connclusion
 An important part of this setup is the networking. Our compose basically has two networks, `network-service` and `network-app`. The `network-service` allows the db and service tiers to communicate to each other. While the `network-app` connects the app and the service tier together. That means that the app can access the API inside the service layer but cannot access the db layer. And since we only expose a port for the app layer, from our host machine we cannot access the service or the database tier. That makes our setup modular and more secure.
