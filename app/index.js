@@ -13,14 +13,15 @@ app.get('/', function(req, res) {
         function(err, resp, body) {
             if (!err && resp.statusCode === 200) {
                 var objData = JSON.parse(body);
-                var c_cap = objData.data;
-                var responseString = `<table border="1"><tr><td>Country</td><td>Capital</td></tr>`;
+                var c_cap = objData.data;  // Array of county and city
 
-                for (var i = 0; i < c_cap.length; i++)
-                    responseString = responseString +
-                      `<tr><td>${c_cap[i].country}</td><td>${c_cap[i].capital}</td></tr>`;
+                var responseString = `<table border="1"><tr><td>County</td><td>City</td></tr>`;
 
-                responseString = responseString + `</table>`;
+                for (var i = 0; i < c_cap.length; i++) {
+                    responseString += `<tr><td>${c_cap[i].county}</td><td>${c_cap[i].city}</td></tr>`;
+                }
+
+                responseString += `</table>`;
                 res.send(responseString);
             } else {
                 console.log(err);
@@ -28,4 +29,4 @@ app.get('/', function(req, res) {
         });
 });
 
-app.listen(port, () => console.log(`Frontend app listening on port ${port}!`))
+app.listen(port, () => console.log(`Frontend app listening on port ${port}!`));

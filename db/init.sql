@@ -1,10 +1,10 @@
-create table country_and_capitals (
-  country text,
-  capital text
+CREATE TABLE county_and_city (
+  county TEXT,
+  city TEXT
 );
 
-insert into country_and_capitals(country, capital) values ('Switzerland', 'Bern');
-insert into country_and_capitals(country, capital) values ('India', 'Delhi');
-insert into country_and_capitals(country, capital) values ('China', 'Beijing');
-insert into country_and_capitals(country, capital) values ('Bhutan', 'Thimpu');
-insert into country_and_capitals(country, capital) values ('Russia', 'Moscow');
+INSERT INTO county_and_city (county, city) VALUES ('Dolj', 'Craiova');
+INSERT INTO county_and_city (county, city) VALUES ('Mehedinti', 'Drobeta Turnu Severin');
+INSERT INTO county_and_city (county, city) VALUES ('Gorj', 'Tg Jiu');
+INSERT INTO county_and_city (county, city) VALUES ('Olt', 'Slatina');
+INSERT INTO county_and_city (county, city) VALUES ('Valcea', 'Rm Valcea');

@@ -11,7 +11,7 @@ const pool = new Pool({
 });
 
 app.get('/data', function(req, res) {
-    pool.query('SELECT country, capital from country_and_capitals', [], (err, result) => {
+    pool.query('SELECT county, city from county_and_city ', [], (err, result) => {
         if (err) {
             return res.status(405).jsonp({
                 error: err
