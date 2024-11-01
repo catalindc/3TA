@@ -13,7 +13,7 @@ app.get('/', function(req, res) {
         function(err, resp, body) {
             if (!err && resp.statusCode === 200) {
                 var objData = JSON.parse(body);
-                var c_cap = objData.data;  // Array of county and city
+                var c_cap = objData.data;  
 
                 var responseString = `<table border="1"><tr><td>County</td><td>City</td></tr>`;
 

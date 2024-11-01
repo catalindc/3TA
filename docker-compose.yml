@@ -1,3 +1,5 @@
+version: '3.8'  # or another supported version
+
 services:
   db:
     image: postgres:11.2-alpine
@@ -21,7 +23,9 @@ services:
       - network-app
 
   app:
-    build: ./app
+    build:
+      context: ./app
+      dockerfile: benchDockerfile
     environment:
       - API_URL=http://service:3001/data
     depends_on:
@@ -30,7 +34,6 @@ services:
       - "3000:3000"
     networks:
       - network-app
-
 
 networks:
   network-service:

@@ -1,0 +1,1 @@
+CONNECTION_STRING=postgres://demo_user:your_password@localhost:5433/demo_db
